@@ -1,22 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { ObservableComponent } from './try/observable/observable.component';
-
+import { AppRoutingModule } from './/app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ObservableComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: 'observable', component: ObservableComponent }
-    ]),
+    NgbModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

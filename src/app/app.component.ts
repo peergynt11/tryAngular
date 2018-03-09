@@ -8,8 +8,17 @@ import { print } from 'util';
 })
 
 export class AppComponent {
-  _title = 'app';
   
+  menuItems = [
+    {form: 'welcome', formDesc: 'Welcome'},
+    {form: 'form1', formDesc: 'Template Form'},
+    {form: 'form2', formDesc: 'Reactive Form'},
+    {form: 'form3', formDesc: 'ngx bootstrap'},  
+  ]
+  
+  _title = 'app';
+  logo = '../assets/gecot-logo.png'
+
   constructor() {
     fromConstructor();
     this.print_array();
