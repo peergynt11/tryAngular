@@ -9,6 +9,8 @@ import { print } from 'util';
 
 export class AppComponent {
   
+  navigationBar: string = "navbar navbar-expand-sm navbar-dark bg-primary";
+  //navigationBar: string = "navbar navbar-expand-sm navbar-light bg-light";
   menuItems = [
     {form: 'welcome', formDesc: 'Welcome'},
     {form: 'form1', formDesc: 'Template Form'},
