@@ -15,6 +15,7 @@ export class AppComponent {
   menuItems = [
     {form: 'welcome', formDesc: 'Welcome'},
     {form: 'jqwidgets', formDesc: 'JQWidgets examples'}, 
+    {form: 'binding', formDesc: 'Binding examples'}, 
   ]
   
   _title = 'app';
