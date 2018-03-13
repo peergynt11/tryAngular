@@ -1,1 +1,16 @@
 .fett { background: black; color: white; font-weight: bold; }
+
+.italic {
+    font-style: italic;
+  }
+  
+  .awesome {
+    color: red;
+  }
+  
+  .move {
+    position: relative;
+    animation:move 1s infinite;
+    animation-duration: 3s;
+  }
+  

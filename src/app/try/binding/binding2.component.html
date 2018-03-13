@@ -1,0 +1,23 @@
+<h3>Interpolation</h3>
+{{showThis}}
+<br>
+<button (click)="toggleShowMe()">toggle</button><br>
+<br>
+<h3>two way binding with ngModel</h3>
+(needs FormsModule !!!)<br>
+<input type='text' [(ngModel)]='dept' name='dept' />
+<br>{{dept}}
+<br>
+<br>
+<h3>Template reference variable</h3>
+<input type='text' #phone name='phone' />
+<button (click)="setPhoneNumber(phone.value)">Set Phone Number</button><br>
+{{phone.value}}
+<br>
+<br>
+<h3>Input Property with @Input Variable</h3>
+fromParent: {{fromParent}}
+<br>
+<br>
+<h3>Output Property with @Output Variable</h3>
+<button (click)="sendOutputVariable()">Send Output Variable</button><br>
