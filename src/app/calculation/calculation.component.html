@@ -1,0 +1,109 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      Calculation sheet
+    </div>
+    <div class="panel-body">
+      <form class="form-vertical"
+            novalidate
+            (ngSubmit)="onSubmit()"
+            [formGroup]="calculationForm">
+
+        <fieldset>
+
+            <div class="form-group">
+              <label class="col-md-8 control-label" for="bundleId">Select a Bundle:</label>
+              <div class="col-md-8">
+                <select class="form-control"
+                        id="bundleId" 
+                        type="text" 
+                        placeholder="Please select a bundle"
+                        formControlName = "bundle">
+                        <option *ngFor="let bundle of bundles" [ngValue]="bundle.dropdownValue">
+                        {{ bundle.dropdownDesc }}
+                        </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-8 control-label" for="storageId">Storage per User in GB:</label>
+                <div class="col-md-8">
+                  <select class="form-control"
+                        id="storageId" 
+                        type="text" 
+                        placeholder="Please select the storage per User"
+                        formControlName = "storage">
+                        <option *ngFor="let storage of storages" [ngValue]="storage.dropdownValue">
+                              {{ storage.dropdownDesc }}
+                        </option>
+                  </select>
+                </div>          
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-8 control-label" for="backupId">Backup per User in GB:</label>
+                <div class="col-md-8">
+                  <select class="form-control"
+                        id="backupId" 
+                        type="text" 
+                        placeholder="Please select the backup per User"
+                        formControlName = "backup">
+                        <option *ngFor="let back of backup" [ngValue]="back.dropdownValue">
+                              {{ back.dropdownDesc }}
+                        </option>
+                  </select>
+                </div>          
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-8 control-label" for="userId">Number of Users:</label>
+                <div class="col-md-8">
+                  <select class="form-control"
+                        id="userId" 
+                        type="text" 
+                        placeholder="Please select the number of Users"
+                        formControlName = "user">
+                        <option value=1>1</option>
+                        <option value=2>2</option>                      
+                        <option value=3>3</option>                      
+                        <option value=4>4</option>                                              
+                        <option value=5>5</option>                      
+                        <option value=6>6</option>
+                        <option value=7>7</option>                      
+                        <option value=8>8</option>                      
+                        <option value=9>9</option>                                              
+                        <option value=10>10</option>
+                      </select>
+                </div>          
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="resultId">Available Core hours per Year:</label>
+                <div class="col-md-8">
+                    <input class="form-control" 
+                            id="Id" 
+                            type="text" 
+                            placeholder=""
+                            formControlName="result" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-4 col-md-offset-2">
+                      <button class="btn btn-primary"
+                              type="submit">
+                          Submit
+                      </button>          
+              </div>
+            </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="panel-footer">
+
+        <div *ngFor = "let x of price_per_year | async">
+          {{x.singleDesc}}
+        </div>
+    </div>
+  </div>

@@ -16,6 +16,8 @@ export class AppComponent {
     {form: 'welcome', formDesc: 'Welcome'},
     {form: 'jqwidgets', formDesc: 'JQWidgets examples'}, 
     {form: 'binding', formDesc: 'Binding examples'}, 
+    {form: 'calculation', formDesc: 'Calculation'}, 
+    {form: 'observable', formDesc: 'Observable'}, 
   ]
   
   _title = 'app';
