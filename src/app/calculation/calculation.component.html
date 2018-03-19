@@ -26,6 +26,28 @@
             </div>
 
             <div class="form-group">
+              <label class="col-md-8 control-label" for="userId">Number of Users:</label>
+                <div class="col-md-8">
+                  <select class="form-control"
+                        id="userId" 
+                        type="text" 
+                        placeholder="Please select the number of Users"
+                        formControlName = "user">
+                        <option value=1>1</option>
+                        <option value=2>2</option>                      
+                        <option value=3>3</option>                      
+                        <option value=4>4</option>                                              
+                        <option value=5>5</option>                      
+                        <option value=6>6</option>
+                        <option value=7>7</option>                      
+                        <option value=8>8</option>                      
+                        <option value=9>9</option>                                              
+                        <option value=10>10</option>
+                      </select>
+                </div>          
+            </div>
+
+            <div class="form-group">
               <label class="col-md-8 control-label" for="storageId">Storage per User in GB:</label>
                 <div class="col-md-8">
                   <select class="form-control"
@@ -55,33 +77,11 @@
                 </div>          
             </div>
 
-
-            <div class="form-group">
-              <label class="col-md-8 control-label" for="userId">Number of Users:</label>
-                <div class="col-md-8">
-                  <select class="form-control"
-                        id="userId" 
-                        type="text" 
-                        placeholder="Please select the number of Users"
-                        formControlName = "user">
-                        <option value=1>1</option>
-                        <option value=2>2</option>                      
-                        <option value=3>3</option>                      
-                        <option value=4>4</option>                                              
-                        <option value=5>5</option>                      
-                        <option value=6>6</option>
-                        <option value=7>7</option>                      
-                        <option value=8>8</option>                      
-                        <option value=9>9</option>                                              
-                        <option value=10>10</option>
-                      </select>
-                </div>          
-            </div>
-
             <div class="form-group">
                 <label class="col-md-2 control-label" for="resultId">Available Core hours per Year:</label>
                 <div class="col-md-8">
                     <input class="form-control" 
+                            style="width: 300px; font-Weight: bold"
                             id="Id" 
                             type="text" 
                             placeholder=""
@@ -102,8 +102,22 @@
     </div>
     <div class="panel-footer">
 
-        <div *ngFor = "let x of price_per_year | async">
+
+        <!-- <div *ngFor = "let x of price_per_year | async">
+          price per year 1:
           {{x.singleDesc}}
+        </div> -->
+        <div>
+          <!-- price per year:
+          {{ price_per_year.singleDesc }}
+          price storage:
+          {{ price_storage_per_gb.singleDesc }}
+          price backup:
+          {{ price_backup_per_gb.singleDesc }}
+          price_core_per_hour:
+          {{ price_core_per_hour.singleDesc }} -->
         </div>
-    </div>
-  </div>
+
+
+      </div>
+  </div>  
