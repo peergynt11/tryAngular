@@ -7,3 +7,4 @@ export interface IValue{
     singleValue: number;
     singleDesc: string
 }
+

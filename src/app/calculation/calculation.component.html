@@ -48,39 +48,41 @@
                 </div>          
             </div>
 
-            <div class="form-group">
-              <label class="col-md-8 control-label" for="storageId">Storage per User in GB:</label>
-                <div class="col-md-8">
-                  <select class="form-control"
-                        id="storageId" 
-                        type="text" 
-                        placeholder="Please select the storage per User"
-                        formControlName = "storage">
-                        <option *ngFor="let storage of storages" [ngValue]="storage.dropdownValue">
-                              {{ storage.dropdownDesc }}
-                        </option>
-                  </select>
-                </div>          
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-8 control-label" for="backupId">Backup per User in GB:</label>
-                <div class="col-md-8">
-                  <select class="form-control"
-                        [class.is-invalid]="backupErrorMessage"
-                        id="backupId" 
-                        type="text" 
-                        placeholder="Please select the backup per User"
-                        formControlName = "backup">
-                        <option *ngFor="let back of backup" [ngValue]="back.dropdownValue">
-                              {{ back.dropdownDesc }}
-                        </option>
-                  </select>
-                  <div class="invalid-feedback">
-                    {{backupErrorMessage}}
-                  </div>
-                </div>          
+            <div formGroupName="storageGB">
+              <div class="form-group">
+                <label class="col-md-8 control-label" for="storageId">StorageGB per User in GB:</label>
+                  <div class="col-md-8">
+                    <select class="form-control"
+                          id="storageId" 
+                          type="text" 
+                          placeholder="Please select the storage per User"
+                          formControlName = "storage">
+                          <option *ngFor="let storage of storages" [ngValue]="storage.dropdownValue">
+                                {{ storage.dropdownDesc }}
+                          </option>
+                    </select>
+                  </div>          
               </div>
+  
+              <div class="form-group">
+                  <label class="col-md-8 control-label" for="backupId">BackupGB per User in GB:</label>
+                  <div class="col-md-8">
+                    <select class="form-control"
+                          [class.is-invalid]="backupErrorMessage"
+                          id="backupId" 
+                          type="text" 
+                          placeholder="Please select the backup per User"
+                          formControlName = "backup">
+                          <option *ngFor="let back of backup" [ngValue]="back.dropdownValue">
+                                {{ back.dropdownDesc }}
+                          </option>
+                    </select>
+                    <div class="invalid-feedback">
+                      {{backupErrorMessage}}
+                    </div>
+                  </div>          
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-md-2 control-label" for="resultId">Available Core hours per Year:</label>
@@ -92,18 +94,6 @@
                             placeholder=""
                             formControlName="result" />
                 </div>
-            </div>
-
-            <div class="col-md-6 mb-3">
-              <label for="validationCustom03">City</label>
-              <input type="text" class="form-control"
-                    [ngClass]="{'is-invalid': (calculationForm.get('city').touched || 
-                    calculationForm.get('city').dirty) && 
-                    !calculationForm.get('city').valid }"
-                    id="validationCustom03" placeholder="City" formControlName="city" >
-              <div class="invalid-feedback">
-                Please provide a valid city.
-              </div>
             </div>
 
             <div class="form-group">

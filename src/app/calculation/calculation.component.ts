@@ -7,7 +7,6 @@ import { FormGroup, FormControl,  FormBuilder, FormArray, Validators, AbstractCo
 import { Observable } from 'rxjs';
 
 
-
 function backupCheck(compare: number): ValidatorFn {
   return  (c: AbstractControl): {[key: string]: boolean} | null => {
       if (c.value !== undefined && (isNaN(c.value) || c.value > compare )) {
@@ -17,14 +16,16 @@ function backupCheck(compare: number): ValidatorFn {
   };
 }
 
+function storageCheck(c: AbstractControl): {[key: string]: boolean} | null {
 
-// function backupCheck(c: AbstractControl): {[key: string]: boolean} | null {
-//   if (c.value == 1000) {
-//     console.log('greaterError');
-//     return {'greater': true }
-//   }
-//     return null;
-// }
+  let $storage = c.get('storage');
+  let $backup  = c.get('backup');
+
+  if (parseInt($backup.value) > parseInt($storage.value)) {
+    return { 'backupSizeToGreat': true }
+  }
+    return null;
+}
 
 @Component({
   selector: 'app-calculation',
@@ -58,11 +59,12 @@ export class CalculationComponent implements OnInit {
   ngOnInit() {
     this.calculationForm = this._fb.group({
       bundle:'10000',
-      storage:'250',
+      storageGB: this._fb.group({
+        storage: '250',
+        backup:  ['0']
+      }, { validator: storageCheck } ),
       user:'1',
-      result:'153.400',
-      backup: ['0', backupCheck(250)],
-      city: ['', Validators.required]
+      result:'153.400'
     })
 
     this.initSelectBoxes();
@@ -72,12 +74,12 @@ export class CalculationComponent implements OnInit {
     this._calculationService.getSingleValue(7).subscribe(data =>  this.price_core_per_hour = data[0])        
 
     this.calculationForm.get('bundle').valueChanges.subscribe(value => this.calculate(value));
-    this.calculationForm.get('storage').valueChanges.subscribe(value => this.calculate(value));
+    this.calculationForm.get('storageGB').valueChanges.subscribe(value => this.calculate(value));
     this.calculationForm.get('user').valueChanges.subscribe(value => this.calculate(value));
-    this.calculationForm.get('backup').valueChanges.subscribe(value => this.calculate(value));
 
-    const backupControl = this.calculationForm.get('backup');
-    backupControl.valueChanges.subscribe(value => this.setMessage(backupControl))
+
+    const storageGB = this.calculationForm.get('storageGB');
+    storageGB.valueChanges.subscribe(value => this.setMessage(storageGB))
   }
 
   private initSelectBoxes(): void {
@@ -106,16 +108,14 @@ export class CalculationComponent implements OnInit {
   }
 
   setMessage(c: AbstractControl): void {
+    console.log(c)
     this.backupErrorMessage = '';
     if ( (c.touched || c.dirty) && c.errors ) {
       this.backupErrorMessage = Object.keys(c.errors).map(key => this.validationMessages[key]).join(' ');
     }
   }
 
-
   onSubmit(): void {
-
-    this.classValidated = true;
     console.log(this.price_per_year.singleDesc)
     console.log(this.price_storage_per_gb.singleDesc)
     console.log(this.price_backup_per_gb.singleDesc)
@@ -124,14 +124,12 @@ export class CalculationComponent implements OnInit {
 
   calculate(value) {
 
-    console.log(this.calculationForm)
-
-    if (this.calculationForm.get('backup').valid) {
-
+    this.calculationForm.patchValue({result: 0})
+    if (! this.backupErrorMessage) {
         let $bundle = this.calculationForm.get('bundle').value
         let $user = this.calculationForm.get('user').value
-        let $storage = this.calculationForm.get('storage').value
-        let $backup = this.calculationForm.get('backup').value
+        let $storage = this.calculationForm.get('storageGB.storage').value
+        let $backup = this.calculationForm.get('storageGB.backup').value
 
 
         // console.log(this.price_per_year.singleValue)
@@ -151,8 +149,6 @@ export class CalculationComponent implements OnInit {
         }else {
           this.calculationForm.patchValue({result: $corehours.toLocaleString()})      
         }
-      }else {
-        this.calculationForm.patchValue({result: 0})              
-      }
     }
+  }
 }
