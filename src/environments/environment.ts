@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  myname: 'Bernd Vierhuf'
+  envName   : 'development'
 };

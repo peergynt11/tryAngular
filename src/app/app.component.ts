@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, enableProdMode } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
+import { environment } from '../environments/environment';
 
 
 @Component({
@@ -20,13 +22,10 @@ export class AppComponent {
     {form: 'observable', formDesc: 'Observable'}, 
   ]
   
-  _title = 'app';
+  pageTitle = 'try-It on: ' + environment.envName;
   
-  constructor() {  
-  }
-
-  get title(): string {
-    return this._title;
+  constructor(private _titleService: Title) {  
+    this._titleService.setTitle(this.pageTitle);
   }
 
 }

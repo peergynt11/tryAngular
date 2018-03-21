@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ import { ConfigService } from './shared/config.service';
     AppRoutingModule,
     JqwidgetsModule
   ],
-  providers: [CalculationService, ConfigService],
+  providers: [CalculationService, ConfigService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
