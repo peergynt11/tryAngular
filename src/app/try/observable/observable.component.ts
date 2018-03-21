@@ -23,13 +23,13 @@ export class ObservableComponent implements OnInit {
 
   ngOnInit() {
     // this.observable1();
-    // this.observable2();
+    this.observable2();
     // this.observable3();
     // this.observable4();
     // this.observable5();
-    this.observable6();
-    this.observable7();
-    this.observable8();
+    // this.observable6();
+    // this.observable7();
+    // this.observable8();
   }
 
   observable1(): void {

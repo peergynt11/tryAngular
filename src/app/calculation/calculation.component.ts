@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { IDropdown, IValue } from '../shared/dropdown';
 import { FormGroup, FormControl,  FormBuilder, FormArray, Validators, AbstractControl, ValidatorFn, MinLengthValidator } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { ConfigService } from '../shared/config.service';
 
 
 function backupCheck(compare: number): ValidatorFn {
@@ -49,11 +50,14 @@ export class CalculationComponent implements OnInit {
   
   backupErrorMessage: string = '';
 
-  private validationMessages = {
-    'backupSizeToGreat': 'Wrong size for backup' 
-  };
+  // private validationMessages = {
+  //   'backupSizeToGreat': 'Wrong size for backup' 
+  // };
 
-  constructor(private _calculationService: CalculationService, private _fb: FormBuilder){ 
+  constructor(
+    private _calculationService: CalculationService, 
+    private _fb: FormBuilder,
+    private _config: ConfigService){ 
   }
 
   ngOnInit() {
@@ -74,12 +78,14 @@ export class CalculationComponent implements OnInit {
     this._calculationService.getSingleValue(7).subscribe(data =>  this.price_core_per_hour = data[0])        
 
     this.calculationForm.get('bundle').valueChanges.subscribe(value => this.calculate(value));
-    this.calculationForm.get('storageGB').valueChanges.subscribe(value => this.calculate(value));
     this.calculationForm.get('user').valueChanges.subscribe(value => this.calculate(value));
 
-
     const storageGB = this.calculationForm.get('storageGB');
-    storageGB.valueChanges.subscribe(value => this.setMessage(storageGB))
+    storageGB.valueChanges.subscribe(value => {  
+            this.calculationForm.patchValue({result: 0});
+            this.setMessage(storageGB);
+            this.calculate(value);
+    })
   }
 
   private initSelectBoxes(): void {
@@ -108,10 +114,9 @@ export class CalculationComponent implements OnInit {
   }
 
   setMessage(c: AbstractControl): void {
-    console.log(c)
     this.backupErrorMessage = '';
     if ( (c.touched || c.dirty) && c.errors ) {
-      this.backupErrorMessage = Object.keys(c.errors).map(key => this.validationMessages[key]).join(' ');
+      this.backupErrorMessage = Object.keys(c.errors).map(key => this._config.validationMessages[key]).join(' ');
     }
   }
 
@@ -124,8 +129,8 @@ export class CalculationComponent implements OnInit {
 
   calculate(value) {
 
-    this.calculationForm.patchValue({result: 0})
-    if (! this.backupErrorMessage) {
+
+    if ( this.calculationForm.valid ) {
         let $bundle = this.calculationForm.get('bundle').value
         let $user = this.calculationForm.get('user').value
         let $storage = this.calculationForm.get('storageGB.storage').value
@@ -152,3 +157,4 @@ export class CalculationComponent implements OnInit {
     }
   }
 }
+

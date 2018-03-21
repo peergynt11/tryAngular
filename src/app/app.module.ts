@@ -13,6 +13,7 @@ import { CalculationComponent } from './calculation/calculation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ObservableComponent } from './try/observable/observable.component';
 import { CommonModule } from '@angular/common';
+import { ConfigService } from './shared/config.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     JqwidgetsModule
   ],
-  providers: [CalculationService],
+  providers: [CalculationService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
