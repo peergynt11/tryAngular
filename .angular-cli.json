@@ -21,7 +21,7 @@
       "styles": [
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css"      ],
+        "../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css"],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js"

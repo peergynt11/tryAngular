@@ -1,0 +1,28 @@
+<ng-template #content let-c="close" let-d="dismiss">
+<!-- <ng-template #content> -->
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <!-- <button type="button" class="close" aria-label="Close" (click)="dismissModal('Cross click done')"> -->
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <input type='text' [(ngModel)]='firstName' />
+    </div>
+    <pre>firstName: {{firstName}}</pre>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Close click')">Close</button>
+    <!-- <button type="button" class="btn btn-primary" (click)="closeModal('Close click done')">Close</button> -->
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Open Modal</button>
+
+<hr>
+
+<pre>closeResult: {{closeResult}}</pre>
+<pre>firstName: {{firstName}}</pre>

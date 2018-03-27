@@ -20,6 +20,7 @@ export class AppComponent {
     {form: 'binding', formDesc: 'Binding examples'}, 
     {form: 'calculation', formDesc: 'Calculation'}, 
     {form: 'observable', formDesc: 'Observable'}, 
+    {form: 'modal', formDesc: 'Modaler Dialog'}, 
   ]
   
   pageTitle = 'try-It on: ' + environment.envName;

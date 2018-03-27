@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ObservableComponent } from './try/observable/observable.component';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './shared/config.service';
+import { ModalComponent } from './try/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ConfigService } from './shared/config.service';
     Binding2Component,
     ObservableComponent,
     CalculationComponent,
+    ModalComponent,
   ],
   imports: [
     CommonModule,

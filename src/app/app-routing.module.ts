@@ -5,6 +5,7 @@ import { JqwidgetsComponent } from './try/jqwidgets/jqwidgets.component';
 import { BindingComponent } from './try/binding/binding.component';
 import { CalculationComponent } from './calculation/calculation.component';
 import { ObservableComponent } from './try/observable/observable.component';
+import { ModalComponent } from './try/modal/modal.component';
 
 const routes: Routes = ([
   { path: 'welcome', component: WelcomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = ([
   { path: 'observable', component: ObservableComponent},
   { path: 'calculation', component: CalculationComponent },
   { path: 'jqwidgets', component: JqwidgetsComponent },
+  { path: 'modal', component: ModalComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full'},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
 ])
