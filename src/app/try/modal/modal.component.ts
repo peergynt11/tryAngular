@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgbModal, NgbModalOptions, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
-
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -24,10 +24,12 @@ export class ModalComponent implements OnInit {
   set firstName(value: string ) {
     this._firstName = value; 
   }   
-
+  
+  @ViewChild('content') private modalContent;
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.open(this.modalContent)
   }
 
   open(content) {
