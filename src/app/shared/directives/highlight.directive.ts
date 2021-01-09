@@ -9,15 +9,15 @@ export class HighlightDirective {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('yellow');
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
     this.highlight('red');
   }
 
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+
   highlight(el: string) {
-    this.el.nativeElement.style.backgroundColor = 'yellow';
+    this.el.nativeElement.style.backgroundColor = el;
  }
 
 }
