@@ -1,25 +1,25 @@
-
-<h3 [class.fett]="soll_ich_class_fett_zuordnen">Single Class binding with [class.fett]</h3>
+<div #myDiv></div>
+<h3 [class.fett]="soll_ich_class_fett_zuordnen">1. Single Class binding with [class.fett]</h3>
 <button (click)="toggleClass()">toggle Class fett</button><br>
 <br>
 <br>
-<h3 [style.color]="soll_ich_bunt_stylen ? 'red' : 'black'">Single Style binding with [style.color]</h3>
+<h3 [style.color]="soll_ich_bunt_stylen ? 'red' : 'black'">2. Single Style binding with [style.color]</h3>
 <button (click)="toggleStyle()">toggle</button><br>
 <br>
 <br>
-<h3 [ngClass]="setClasses()">Multiple Class binding with [ngClass]</h3>
+<h3 [ngClass]="setClasses()">3. Multiple Class binding with [ngClass]</h3>
 <button (click)="toggleNgClass()">toggle </button><br>
 <br>
 <br>
-<h3 [ngStyle]="setStyles()">Multiple Style binding with [ngStyle]</h3>
+<h3 [ngStyle]="setStyles()">4. Multiple Style binding with [ngStyle]</h3>
 <button (click)="toggleNgStyle()">toggle </button><br>
 <br>
 <br>
-<h3>@Output-Varaible von binding2.component.ts</h3>
+<h3>5. @Output-Varaible von binding2.component.ts</h3>
 {{fromChild}}
 
-
-<app-binding2 
+<h3>APP-BINDING 2</h3>
+<app-binding2 componentName="child-Component"
     [fromParent]="'Dieser Text kommt von der Parent Component'"
     (toParent)=onToParent($event)>
 </app-binding2>

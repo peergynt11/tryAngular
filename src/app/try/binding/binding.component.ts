@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Renderer2, AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Binding2Component } from './binding2.component';
 
 @Component({
   selector: 'app-binding',
   templateUrl: './binding.component.html',
   styleUrls: ['./binding.component.css']
 })
-export class BindingComponent implements OnInit {
+export class BindingComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(Binding2Component) b2C: Binding2Component;  
+  @ViewChild("myDiv") myDiv: ElementRef;
 
   fromChild: string;
   soll_ich_class_fett_zuordnen: boolean = false;
@@ -20,10 +25,23 @@ export class BindingComponent implements OnInit {
   show_move: boolean = true
   show_italic: boolean = true
   
-
-  constructor() { }
+   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    console.log('b2C: '+this.b2C.componentName);
+    console.log('b2C: '+this.b2C.toggleShowMe);
+    console.log('b2C: '+this.b2C.showThis);
+
+    const h1 = this.renderer.createElement('h1');
+    const text = this.renderer.createText('Hello Binding example');
+
+    this.renderer.appendChild(h1, text);
+    this.renderer.appendChild(this.myDiv.nativeElement, h1);
+
+    console.log('myDiv:'+this.myDiv.nativeElement);
   }
 
   toggleClass(): void {

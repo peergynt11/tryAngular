@@ -1,23 +1,45 @@
+<p>app-binding2 works!</p>
 <h3>Interpolation</h3>
 {{showThis}}
 <br>
 <button (click)="toggleShowMe()">toggle</button><br>
 <br>
-<h3>two way binding with ngModel</h3>
+<h3>1. two way binding with ngModel</h3>
 (needs FormsModule !!!)<br>
 <input type='text' [(ngModel)]='dept' name='dept' />
 <br>{{dept}}
 <br>
 <br>
-<h3>Template reference variable</h3>
-<input type='text' #phone name='phone' />
+<h3>2. Template reference variable</h3>
+<input type='text' #phone name='phonenumber' />
 <button (click)="setPhoneNumber(phone.value)">Set Phone Number</button><br>
 {{phone.value}}
 <br>
 <br>
-<h3>Input Property with @Input Variable</h3>
+<h3>3. Input Property with @Input Variable</h3>
 fromParent: {{fromParent}}
 <br>
 <br>
-<h3>Output Property with @Output Variable</h3>
+<h3>4. Output Property with @Output Variable</h3>
 <button (click)="sendOutputVariable()">Send Output Variable</button><br>
+<h3>5. Input Element mit disabled property</h3>
+<input [disabled]="toogle5"/>
+<button (click)="setToogle5()">Disable Input</button><br>
+<h3>6. If then else with ngTemplate </h3>
+<div *ngIf="toogle6; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>Content to render when condition is true.</ng-template>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template>
+<button (click)="setToogle6()">Toogle Nr. 6</button><br>
+<div></div>
+<h3>7. If / For </h3>
+<ng-container *ngIf="showMonths">
+    <div *ngFor="let month of months">
+        <div class="lesson-detail">
+            Jahr: {{month.Jahr | json}}
+            Monat: {{month.Monat | json}}
+        </div>
+    </div>
+</ng-container>
+
+<h3>8. Own Directive </h3>
+<p appHighlight>Highlight me!</p>

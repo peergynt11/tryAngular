@@ -15,6 +15,7 @@ import { ObservableComponent } from './try/observable/observable.component';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './shared/config.service';
 import { ModalComponent } from './try/modal/modal.component';
+import { HighlightDirective } from './shared/directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModalComponent } from './try/modal/modal.component';
     ObservableComponent,
     CalculationComponent,
     ModalComponent,
+    HighlightDirective,
   ],
   imports: [
     CommonModule,
