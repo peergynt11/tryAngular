@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Component({
   
@@ -50,7 +51,5 @@ export class Binding2Component implements OnInit {
   sendOutputVariable(): void {
     this.toParent.emit('Dieser Text wurde von binding2.component (Child) an binding.component (Parent) geschickt');
   }
-
-
-
 }
+

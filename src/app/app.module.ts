@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { ConfigService } from './shared/config.service';
 import { ModalComponent } from './try/modal/modal.component';
 import { HighlightDirective } from './shared/directives/highlight.directive';
-
+import { CountClicks } from './shared/directives/highlight.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +27,7 @@ import { HighlightDirective } from './shared/directives/highlight.directive';
     CalculationComponent,
     ModalComponent,
     HighlightDirective,
+    CountClicks
   ],
   imports: [
     CommonModule,
